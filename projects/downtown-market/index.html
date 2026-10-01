@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Downtown Market — Ziqi Xu</title>
+  <meta name="description" content="Customer and vendor research for the City of Charlottesville's Downtown Market, using MaxDiff, conjoint, and TURF to reshape product mix, pricing, and stall layout.">
+  <meta name="author" content="Ziqi (Jacquelyn) Xu">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Downtown Market — Ziqi Xu">
+  <meta property="og:description" content="Customer and vendor research for the City of Charlottesville's Downtown Market, using MaxDiff, conjoint, and TURF to reshape product mix, pricing, and stall layout.">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2A5.5 5.5 0 0 1 21.5 20"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="i-page" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-5 4 10 2.5-5H21"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+    <symbol id="i-list-check" viewBox="0 0 24 24"><path d="M11 6h9M11 12h9M11 18h9M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></symbol>
+  </svg>
+
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../" aria-label="Ziqi Xu, home">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span class="brand-name">Ziqi Xu</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../../#projects">Projects</a>
+        <a href="../../#experience" class="hide-sm">Experience</a>
+        <a href="../../#about">About</a>
+        <a class="nav-cta" href="../../#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="cs-hero">
+        <div class="wrap">
+          <a class="back-link" href="../../#projects"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>All projects</a>
+          <ul class="cs-tags reveal"><li class="chip chip-accent">Case study</li><li class="chip">Customer research</li><li class="chip">2025</li></ul>
+          <h1 class="cs-title reveal" style="--d:1">Downtown Market</h1>
+          <p class="cs-dek reveal" style="--d:2">For the City of Charlottesville, I turned 1,000+ customer and vendor survey responses into product, pricing, and stall-placement changes that contributed to about 15% higher vendor revenue.</p>
+          <dl class="cs-meta reveal" style="--d:3">
+            <div><dt>Role</dt><dd>Marketing Specialist Intern</dd></div>
+            <div><dt>Organization</dt><dd>City of Charlottesville</dd></div>
+            <div><dt>Timeline</dt><dd>Summer 2025 · about two months</dd></div>
+            <div><dt>Methods</dt><dd>Survey design · MaxDiff · Conjoint · TURF</dd></div>
+          </dl>
+          <div class="cs-cover cs-cover-art tint-amber reveal">
+            <svg class="art" viewBox="0 0 800 500" role="img" aria-label="Illustration: three market stalls with striped awnings, a survey card, and a ranking chart">
+                <rect class="ground" x="0" y="432" width="800" height="68"/>
+                <g transform="translate(96 30) rotate(-5)">
+                  <rect class="shade" x="4" y="8" width="196" height="132" rx="16"/>
+                  <rect class="paper" width="196" height="132" rx="16"/>
+                  <text x="20" y="30" font-size="11" letter-spacing="1.4" class="t-muted">SURVEY</text>
+                  <rect class="acc" x="20" y="46" width="16" height="16" rx="4"/>
+                  <path class="s-paper" d="M23.5 54l3 3 6-6.5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect class="ln" x="46" y="50" width="124" height="8" rx="4"/>
+                  <rect class="s-ln" x="21" y="73" width="14" height="14" rx="3.5" stroke-width="2"/>
+                  <rect class="ln" x="46" y="76" width="100" height="8" rx="4"/>
+                  <rect class="s-ln" x="21" y="99" width="14" height="14" rx="3.5" stroke-width="2"/>
+                  <rect class="ln" x="46" y="102" width="112" height="8" rx="4"/>
+                </g>
+                <g transform="translate(320 92)">
+                  <rect class="ink" width="164" height="40" rx="20"/>
+                  <text x="82" y="25" font-size="12" text-anchor="middle" letter-spacing="1.2" class="t-paper">1,000+ RESPONSES</text>
+                </g>
+                <g transform="translate(528 22) rotate(4)">
+                  <rect class="shade" x="4" y="8" width="196" height="136" rx="16"/>
+                  <rect class="paper" width="196" height="136" rx="16"/>
+                  <text x="20" y="30" font-size="11" letter-spacing="1.4" class="t-muted">RANKING</text>
+                  <rect class="acc" x="20" y="46" width="150" height="14" rx="7"/>
+                  <rect class="gold" x="20" y="68" width="118" height="14" rx="7"/>
+                  <rect class="green" x="20" y="90" width="90" height="14" rx="7"/>
+                  <rect class="ln" x="20" y="112" width="58" height="14" rx="7"/>
+                </g>
+                <g transform="translate(100 0)">
+                  <rect class="ink" x="10" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="163" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="-6" y="196" width="192" height="14" rx="7"/>
+                  <rect class="acc" x="0" y="208" width="30" height="40"/><rect class="paper" x="30" y="208" width="30" height="40"/><rect class="acc" x="60" y="208" width="30" height="40"/><rect class="paper" x="90" y="208" width="30" height="40"/><rect class="acc" x="120" y="208" width="30" height="40"/><rect class="paper" x="150" y="208" width="30" height="40"/>
+                  <path class="acc" d="M0 247a15 15 0 0 0 30 0zM60 247a15 15 0 0 0 30 0zM120 247a15 15 0 0 0 30 0z"/>
+                  <path class="paper" d="M30 247a15 15 0 0 0 30 0zM90 247a15 15 0 0 0 30 0zM150 247a15 15 0 0 0 30 0z"/>
+                  <rect class="shade" x="4" y="356" width="180" height="78" rx="8"/>
+                  <rect class="paper" x="0" y="350" width="180" height="78" rx="8"/>
+                  <rect class="acc-soft" x="0" y="374" width="180" height="16"/>
+                  <circle class="acc" cx="36" cy="337" r="13"/><circle class="gold" cx="64" cy="339" r="11"/><circle class="green" cx="106" cy="335" r="15"/><circle class="acc" cx="142" cy="338" r="12"/>
+                </g>
+                <g transform="translate(310 0)">
+                  <rect class="ink" x="10" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="163" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="-6" y="196" width="192" height="14" rx="7"/>
+                  <rect class="green" x="0" y="208" width="30" height="40"/><rect class="paper" x="30" y="208" width="30" height="40"/><rect class="green" x="60" y="208" width="30" height="40"/><rect class="paper" x="90" y="208" width="30" height="40"/><rect class="green" x="120" y="208" width="30" height="40"/><rect class="paper" x="150" y="208" width="30" height="40"/>
+                  <path class="green" d="M0 247a15 15 0 0 0 30 0zM60 247a15 15 0 0 0 30 0zM120 247a15 15 0 0 0 30 0z"/>
+                  <path class="paper" d="M30 247a15 15 0 0 0 30 0zM90 247a15 15 0 0 0 30 0zM150 247a15 15 0 0 0 30 0z"/>
+                  <rect class="shade" x="4" y="356" width="180" height="78" rx="8"/>
+                  <rect class="paper" x="0" y="350" width="180" height="78" rx="8"/>
+                  <rect class="green-soft" x="0" y="374" width="180" height="16"/>
+                  <circle class="green" cx="40" cy="336" r="14"/><circle class="green" cx="70" cy="339" r="11" opacity=".6"/><circle class="gold" cx="110" cy="337" r="13"/><circle class="green" cx="144" cy="338" r="12"/>
+                </g>
+                <g transform="translate(520 0)">
+                  <rect class="ink" x="10" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="163" y="246" width="7" height="188" rx="3" opacity=".7"/>
+                  <rect class="ink" x="-6" y="196" width="192" height="14" rx="7"/>
+                  <rect class="gold" x="0" y="208" width="30" height="40"/><rect class="paper" x="30" y="208" width="30" height="40"/><rect class="gold" x="60" y="208" width="30" height="40"/><rect class="paper" x="90" y="208" width="30" height="40"/><rect class="gold" x="120" y="208" width="30" height="40"/><rect class="paper" x="150" y="208" width="30" height="40"/>
+                  <path class="gold" d="M0 247a15 15 0 0 0 30 0zM60 247a15 15 0 0 0 30 0zM120 247a15 15 0 0 0 30 0z"/>
+                  <path class="paper" d="M30 247a15 15 0 0 0 30 0zM90 247a15 15 0 0 0 30 0zM150 247a15 15 0 0 0 30 0z"/>
+                  <rect class="shade" x="4" y="356" width="180" height="78" rx="8"/>
+                  <rect class="paper" x="0" y="350" width="180" height="78" rx="8"/>
+                  <rect class="gold-soft" x="0" y="374" width="180" height="16"/>
+                  <circle class="gold" cx="38" cy="337" r="13"/><circle class="acc" cx="68" cy="339" r="11"/><circle class="gold" cx="104" cy="336" r="14"/><circle class="green" cx="140" cy="338" r="12"/>
+                </g>
+              </svg>
+          </div>
+          <div class="stats">
+            <div class="stat reveal" style="--d:0"><b>1,000+</b><span>survey responses from customers and vendors</span></div>
+            <div class="stat reveal" style="--d:1"><b>~15%</b><span>higher vendor revenue vs. prior-quarter averages</span></div>
+            <div class="stat reveal" style="--d:2"><b>~10%</b><span>more traffic vs. prior-quarter averages</span></div>
+            <div class="stat reveal" style="--d:3"><b>2 months</b><span>from research to changes on the ground</span></div>
+          </div>
+        </div>
+      </header>
+      <div class="cs-body">
+        <div class="wrap">
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">01</p><h2>The situation</h2></header>
+            <div class="cs-content reveal">
+              <p class="lead">Downtown Market is a city-supported public market. A newly opened market nearby was competing for the same customers and vendors.</p>
+              <p>The team had been relying on on-site observation and vendor feedback. It sensed that its crowd skewed older than the competitor's while younger shoppers still mattered, but it couldn't explain why people came, which products drove purchases, or how price, assortment, and experience affected whether they'd come back.</p>
+              <p>I defined the goal: an evidence-based product-mix and market-experience strategy that grows traffic and vendor revenue without damaging vendor relationships.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">02</p><h2>The approach</h2></header>
+            <div class="cs-content reveal">
+              <p>In the first month, I designed the customer and vendor surveys, collected 1,000+ responses, and ran the analysis. In the second month, the team put the recommendations into practice.</p>
+              <ol class="flow flow-3">
+                <li><b>Survey</b><span>Customers and vendors, 1,000+ responses.</span></li>
+                <li><b>MaxDiff</b><span>Which product categories matter most?</span></li>
+                <li><b>Conjoint</b><span>How do shoppers trade off product mix, price, experience, and vendor variety?</span></li>
+                <li><b>TURF</b><span>Which small set of categories reaches the most shoppers?</span></li>
+                <li><b>Vendor check</b><span>Can vendors actually make these changes?</span></li>
+                <li class="is-key"><b>Roadmap</b><span>Product, pricing, and stall placement.</span></li>
+              </ol>
+              <p>To keep the survey short enough to finish, I limited demographic questions, capped the number of choice tasks, and randomized task and option order.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">03</p><h2>Why three methods</h2></header>
+            <div class="cs-content reveal">
+              <div class="cards">
+                <div class="mini-card"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-list-check"/></svg></span><h3>MaxDiff</h3><p>Simple ratings make everything look important. MaxDiff makes people pick the most and least likely purchase from small sets, which produces a real ranking.</p></div>
+                <div class="mini-card sky"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><h3>Conjoint</h3><p>Shoppers choose between whole market profiles, revealing which attributes actually drive the decision to visit and which are nice extras.</p></div>
+                <div class="mini-card green"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-target"/></svg></span><h3>TURF</h3><p>Finds the smallest set of categories that appeals to the largest share of shoppers, and how much reach each added category brings.</p></div>
+              </div>
+              <p>The methods can disagree: a category can score high on its own but add little reach to a mix that already covers those shoppers. So I used them in order: MaxDiff to rank, conjoint for trade-offs, TURF to optimize the mix, then vendor feedback to check feasibility.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">04</p><h2>What we found</h2></header>
+            <div class="cs-content reveal">
+              <ul>
+                <li>Strong demand for food, beverages, snacks, prepared meals, and flowers.</li>
+                <li>Older shoppers showed more interest in groceries.</li>
+                <li>Younger shoppers were an important segment, but more price-sensitive.</li>
+                <li>Furniture and some handmade crafts drew weaker overall demand.</li>
+              </ul>
+              <p>Put together, parts of the market's product mix, pricing, and stall visibility didn't match what most shoppers wanted.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">05</p><h2>The decision</h2></header>
+            <div class="cs-content reveal">
+              <p class="lead">Low demand didn't mean we should remove vendors.</p>
+              <p>Vendors pay stall fees and bring variety, occupancy, and community trust. Removing them would leave empty stalls and hurt long-term participation. So I turned the research into two low-cost changes:</p>
+              <div class="cards cards-2">
+                <div class="mini-card amber"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span><h3>Adjust the offer</h3><p>Vendors adjusted selected products, portions, and prices, including lower-priced options for younger shoppers, while keeping what made them distinctive.</p></div>
+                <div class="mini-card sky"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span><h3>Rethink the layout</h3><p>Food, beverage, and snack stalls moved to higher-traffic areas, while destination categories like furniture and some crafts moved to less prominent spots.</p></div>
+              </div>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">06</p><h2>Results</h2></header>
+            <div class="cs-content reveal">
+              <p>Compared with prior-quarter averages, the changes contributed to:</p>
+              <p class="callout"><em>~15%</em> higher vendor revenue and <em>~10%</em> more traffic.</p>
+              <p>There was no full control group, so I treat these as directional results, not proof that the research alone caused the change.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">07</p><h2>Looking back</h2></header>
+            <div class="cs-content reveal">
+              <p>What I'd do differently next time:</p>
+              <ul>
+                <li>Survey people who stopped coming or never came, not just current visitors.</li>
+                <li>Set clear baselines before making changes.</li>
+                <li>Roll out in phases, or use matched control areas, to measure impact properly.</li>
+                <li>Track traffic, conversion, average transaction value, and vendor revenue separately.</li>
+                <li>Rotate placements and run themed promotions so lower-demand vendors get fairer exposure.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <nav class="cs-next wrap" aria-label="Next project">
+        <a class="next-card" href="../resume-agent/">
+          <span><span class="eyebrow">Next project</span><span class="next-title">Resume Tailoring Agent</span></span>
+          <span class="arrow-circle"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year>2026</span> Ziqi (Jacquelyn) Xu</span>
+      <span><a href="mailto:gqj3wx@virginia.edu">gqj3wx@virginia.edu</a> · <a href="#top">Back to top ↑</a></span>
+    </div>
+  </footer>
+</body>
+</html>

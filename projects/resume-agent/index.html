@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Tailoring Agent — Ziqi Xu</title>
+  <meta name="description" content="How I built a Claude Code skill that tailors resumes to a job description without inventing experience, and keeps them to one page.">
+  <meta name="author" content="Ziqi (Jacquelyn) Xu">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Resume Tailoring Agent — Ziqi Xu">
+  <meta property="og:description" content="How I built a Claude Code skill that tailors resumes to a job description without inventing experience, and keeps them to one page.">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2A5.5 5.5 0 0 1 21.5 20"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="i-page" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-5 4 10 2.5-5H21"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+    <symbol id="i-list-check" viewBox="0 0 24 24"><path d="M11 6h9M11 12h9M11 18h9M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></symbol>
+  </svg>
+
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../" aria-label="Ziqi Xu, home">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span class="brand-name">Ziqi Xu</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../../#projects">Projects</a>
+        <a href="../../#experience" class="hide-sm">Experience</a>
+        <a href="../../#about">About</a>
+        <a class="nav-cta" href="../../#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="cs-hero">
+        <div class="wrap">
+          <a class="back-link" href="../../#projects"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>All projects</a>
+          <ul class="cs-tags reveal"><li class="chip chip-accent">Case study</li><li class="chip">AI agent</li><li class="chip">2026</li></ul>
+          <h1 class="cs-title reveal" style="--d:1">Resume Tailoring Agent</h1>
+          <p class="cs-dek reveal" style="--d:2">A Claude Code skill that maps your real experience to a job description, rewrites the wording for the role, and keeps the result truthful and on one page.</p>
+          <dl class="cs-meta reveal" style="--d:3">
+            <div><dt>Role</dt><dd>Creator (solo project)</dd></div>
+            <div><dt>Timeline</dt><dd>May 2026 – present</dd></div>
+            <div><dt>Users</dt><dd>Me, then 5 peers · 20+ runs</dd></div>
+            <div><dt>Built with</dt><dd>Claude Code · LLM workflow design · Prompt engineering</dd></div>
+          </dl>
+          <div class="cs-cover cs-cover-art tint-indigo reveal">
+            <svg class="art" viewBox="0 0 800 500" role="img" aria-label="Illustration: an editor window tailoring a resume to a job description, with checks for one page and facts only">
+                <defs><filter id="sh-ra" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#1e1b4b" flood-opacity=".16"/></filter></defs>
+                <rect class="paper" x="100" y="58" width="600" height="380" rx="18" filter="url(#sh-ra)"/>
+                <path class="soft" d="M118 58h564a18 18 0 0 1 18 18v24H100V76a18 18 0 0 1 18-18z"/>
+                <path class="soft" d="M100 100.5h196V438H118a18 18 0 0 1-18-18z"/>
+                <rect class="ln-soft" x="100" y="99.5" width="600" height="1.5"/>
+                <rect class="ln-soft" x="296" y="100.5" width="1.5" height="337.5"/>
+                <rect class="s-line" x="100.75" y="58.75" width="598.5" height="378.5" rx="17.25" stroke-width="1.5"/>
+                <circle cx="124" cy="79" r="5.5" fill="#ff6b6b"/><circle cx="142" cy="79" r="5.5" fill="#f6c344"/><circle cx="160" cy="79" r="5.5" fill="#3ecf8e"/>
+                <text x="420" y="83.5" font-size="12" text-anchor="middle" class="t-muted">resume.tex · tailored for Product Manager</text>
+                <text x="120" y="130" font-size="11" letter-spacing="1.2" class="t-muted">JOB DESCRIPTION</text>
+                <rect class="ink" x="120" y="144" width="120" height="10" rx="5"/>
+                <rect class="ln" x="120" y="166" width="150" height="6" rx="3"/>
+                <rect class="ln" x="120" y="180" width="128" height="6" rx="3"/>
+                <rect class="ln" x="120" y="194" width="142" height="6" rx="3"/>
+                <rect class="acc-soft" x="120" y="214" width="52" height="24" rx="7"/><text x="146" y="230" font-size="11" text-anchor="middle" class="t-acc">SQL</text>
+                <rect class="acc-soft" x="178" y="214" width="92" height="24" rx="7"/><text x="224" y="230" font-size="11" text-anchor="middle" class="t-acc">A/B tests</text>
+                <rect class="acc-soft" x="120" y="244" width="56" height="24" rx="7"/><text x="148" y="260" font-size="11" text-anchor="middle" class="t-acc">LLMs</text>
+                <rect class="acc-soft" x="182" y="244" width="80" height="24" rx="7"/><text x="222" y="260" font-size="11" text-anchor="middle" class="t-acc">Roadmap</text>
+                <rect class="ln" x="120" y="288" width="146" height="6" rx="3"/>
+                <rect class="ln" x="120" y="302" width="118" height="6" rx="3"/>
+                <rect class="ln" x="120" y="316" width="136" height="6" rx="3"/>
+                <text x="320" y="130" font-size="11" letter-spacing="1.2" class="t-muted">RESUME · CHANGES</text>
+                <rect class="rose-soft" x="314" y="146" width="368" height="26" rx="6"/><text x="326" y="164" font-size="14" class="t-rose">−</text><rect class="rose" x="344" y="156" width="230" height="6" rx="3" opacity=".55"/>
+                <rect class="green-soft" x="314" y="178" width="368" height="26" rx="6"/><text x="326" y="196" font-size="14" class="t-green">+</text><rect class="green" x="344" y="188" width="276" height="6" rx="3" opacity=".7"/>
+                <rect class="ln" x="344" y="220" width="300" height="6" rx="3"/>
+                <rect class="ln" x="344" y="238" width="256" height="6" rx="3"/>
+                <rect class="rose-soft" x="314" y="256" width="368" height="26" rx="6"/><text x="326" y="274" font-size="14" class="t-rose">−</text><rect class="rose" x="344" y="266" width="200" height="6" rx="3" opacity=".55"/>
+                <rect class="green-soft" x="314" y="288" width="368" height="26" rx="6"/><text x="326" y="306" font-size="14" class="t-green">+</text><rect class="green" x="344" y="298" width="292" height="6" rx="3" opacity=".7"/>
+                <rect class="ln" x="344" y="330" width="280" height="6" rx="3"/>
+                <rect class="ln" x="344" y="348" width="230" height="6" rx="3"/>
+                <rect class="ln" x="344" y="366" width="262" height="6" rx="3"/>
+                <rect class="paper" x="420" y="408" width="128" height="40" rx="20" filter="url(#sh-ra)"/>
+                <circle class="green" cx="442" cy="428" r="10"/><path class="s-paper" d="M437.5 428.5l3 3 6-6.5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><text x="460" y="432.5" font-size="13.5" class="t-sans t-ink">One page</text>
+                <rect class="paper" x="560" y="408" width="140" height="40" rx="20" filter="url(#sh-ra)"/>
+                <circle class="green" cx="582" cy="428" r="10"/><path class="s-paper" d="M577.5 428.5l3 3 6-6.5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><text x="600" y="432.5" font-size="13.5" class="t-sans t-ink">Facts only</text>
+              </svg>
+          </div>
+          <div class="stats">
+            <div class="stat reveal" style="--d:0"><b>~5 min</b><span>from job description to a tailored resume</span></div>
+            <div class="stat reveal" style="--d:1"><b>5</b><span>peers using it on real applications</span></div>
+            <div class="stat reveal" style="--d:2"><b>20+</b><span>tailoring runs so far</span></div>
+            <div class="stat reveal" style="--d:3"><b>1 page</b><span>content budget on every run</span></div>
+          </div>
+        </div>
+      </header>
+      <div class="cs-body">
+        <div class="wrap">
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">01</p><h2>The problem</h2></header>
+            <div class="cs-content reveal">
+              <p class="lead">Similar roles describe the same skills in different words, so job seekers end up rewriting the same resume for every application.</p>
+              <p>Doing it by hand takes time. Generic AI rewriting is faster but creates new problems: it runs past one page, blurs the line between what you did and what sounds good, and you have to remember an exact tool name to use it.</p>
+              <p>I built this skill in my spare time to fix my own application workflow first, then shared it with friends who were job hunting too.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">02</p><h2>How it works</h2></header>
+            <div class="cs-content reveal">
+              <ol class="flow">
+                <li><b>Resume + job</b><span>Start from your existing resume and the target job description.</span></li>
+                <li><b>Map capabilities</b><span>Match each requirement to evidence already on your resume.</span></li>
+                <li class="is-key"><b>Rewrite, don't invent</b><span>Adjust wording toward the role. No new projects, skills, or impact.</span></li>
+                <li class="is-key"><b>One-page budget</b><span>Fit everything inside a fixed one-page content budget.</span></li>
+                <li><b>Tailored resume</b><span>A role-specific version in about five minutes.</span></li>
+              </ol>
+              <p class="caption">The two highlighted steps are the guardrails that make the output trustworthy.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">03</p><h2>Same facts, different story</h2></header>
+            <div class="cs-content reveal">
+              <p>Here's what tailoring looks like in practice: two real bullets from my own resumes, describing the same project for two different roles.</p>
+              <div class="compare">
+                <div class="compare-card">
+                  <span class="eyebrow">Tailored for a product role</span>
+                  <p>Led a five-person team to develop and pitch Allianz Risk Compass, a subscription travel-risk product using proprietary claims data; owned the <mark>product narrative, GTM plan, and financial model</mark> ($9.8M Year 1 revenue, 32% base-case IRR on $15M CapEx).</p>
+                </div>
+                <div class="compare-card alt">
+                  <span class="eyebrow">Tailored for a growth role</span>
+                  <p>Led a five-person team to build and pitch Allianz Risk Compass, a subscription travel-risk product, to Allianz executives, owning a <mark>multi-channel acquisition plan (paid search, SEO, display, referrals, social)</mark> for <mark>risk-averse customers over 50</mark>.</p>
+                </div>
+              </div>
+              <p class="caption">What gets emphasized changes with the role. The underlying facts never do.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">04</p><h2>Shaped by testing</h2></header>
+            <div class="cs-content reveal">
+              <p>I used it on my own applications first, then shared it with peers. Two problems showed up quickly, and each one became a feature:</p>
+              <div class="cards cards-2">
+                <div class="mini-card"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-page"/></svg></span><h3>One-page content budget</h3><p>Early outputs ran too long. A fixed content budget now keeps every tailored version to a single page.</p></div>
+                <div class="mini-card sky"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span><h3>Intent-based triggers</h3><p>People couldn't remember the skill's name. Now plain requests like “tailor my resume,” “tailor for this job,” or “resume improve” start it.</p></div>
+              </div>
+              <p>Feedback from peers has been positive so far. This is small-scale testing, not a launched product, and I treat it that way.</p>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">05</p><h2>What's next</h2></header>
+            <div class="cs-content reveal">
+              <ul>
+                <li>Confirm facts with the user, in a structured way, before rewriting.</li>
+                <li>Explain every change it makes.</li>
+                <li>Offer optional ATS-friendly formatting.</li>
+                <li>Track usage and repeat use.</li>
+                <li>Test whether it improves application outcomes, not just speed.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cs-section">
+            <header class="reveal"><p class="eyebrow">06</p><h2>What I learned</h2></header>
+            <div class="cs-content reveal">
+              <p class="callout">Find a real problem, build quickly, test with real users, then <em>iterate on the constraints</em>.</p>
+              <p>Both of the most important changes, the one-page budget and plain-language triggers, came from watching people use the tool, not from my first design.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <nav class="cs-next wrap" aria-label="Next project">
+        <a class="next-card" href="../hoosmap/">
+          <span><span class="eyebrow">Next project</span><span class="next-title">HoosMap</span></span>
+          <span class="arrow-circle"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year>2026</span> Ziqi (Jacquelyn) Xu</span>
+      <span><a href="mailto:gqj3wx@virginia.edu">gqj3wx@virginia.edu</a> · <a href="#top">Back to top ↑</a></span>
+    </div>
+  </footer>
+</body>
+</html>
